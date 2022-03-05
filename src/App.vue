@@ -1,5 +1,5 @@
 <template>
-  <UserInfo></UserInfo>
+  <UserInfo :getdata="getdata"></UserInfo>
 </template>
 
 <script>
@@ -9,6 +9,24 @@ export default {
   name: 'App',
   components: {
      UserInfo
+  },
+  data(){
+    return{
+      data:null,
+      userdata: null
+    }
+  },
+  methods: {
+    getdata: function(){
+      console.log("hello")
+      this.userdataa()
+    },
+    async userdataa(){
+      console.log("haas")
+      const res = await fetch("https://randomuser.me/api/")
+      //this.userdata = res.json()
+      console.log(res)
+    }
   }
 }
 </script>

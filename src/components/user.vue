@@ -7,12 +7,15 @@
             <li><a href="#"><span>Casting</span> <span>Benjamin Zakalis</span></a><img src="@/assets//4.jpg" alt="image04"/></li>
         </ul>
     </div>
-	<button>Get New Users</button>
+	<button v-on:click="getdata()">Get New Users</button>
 </template>
 
 <script>
 export default{
     name: "UserInfo",
+	props:{
+		getdata: Function
+	}
 }
 
 </script>
