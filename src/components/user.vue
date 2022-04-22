@@ -14,8 +14,9 @@
 export default{
     name: "UserInfo",
 	props:{
-		getdata: Function
-	}
+		getdata: Function,
+		data: Array
+	},
 }
 
 </script>
