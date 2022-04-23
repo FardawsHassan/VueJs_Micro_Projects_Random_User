@@ -1,10 +1,11 @@
 <template>
-    <div class="container">
+    <div class="container" v-if="!load"></div>
+    <div class="container" v-else>
         <ul class="mh-menu">
-            <li><a href="#"><span>Art Director</span> <span>Henry James</span></a><img src="@/assets//1.jpg" alt="image01"/></li>
-            <li><a href="#"><span>Production Coordinator</span> <span>Francis Morgan</span></a><img src="@/assets//2.jpg" alt="image02"/></li>
-            <li><a href="#"><span>Sound</span> <span>Kevin Schneider</span></a><img src="@/assets//3.jpg" alt="image03"/></li>
-            <li><a href="#"><span>Casting</span> <span>Benjamin Zakalis</span></a><img src="@/assets//4.jpg" alt="image04"/></li>
+            <li><a href="#"><span>Art Director</span> <span>{{ data[0].name.first }}</span></a><img src="@/assets//1.jpg" alt="image01"/></li>
+            <li><a href="#"><span>Production Coordinator</span> <span>{{ data[1].name.first }}</span></a><img src="@/assets//2.jpg" alt="image02"/></li>
+            <li><a href="#"><span>Sound</span> <span>{{ data[2].name.first }}</span></a><img src="@/assets//3.jpg" alt="image03"/></li>
+            <li><a href="#"><span>Casting</span> <span>{{ data[3].name.first }}</span></a><img src="@/assets//4.jpg" alt="image04"/></li>
         </ul>
     </div>
 	<button v-on:click="getdata()">Get New Users</button>
@@ -15,7 +16,8 @@ export default{
     name: "UserInfo",
 	props:{
 		getdata: Function,
-		data: Array
+		data: Array,
+		load: Boolean
 	},
 }
 

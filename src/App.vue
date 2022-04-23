@@ -1,5 +1,5 @@
 <template>
-  <UserInfo :getdata="userdata" :data="dataList"></UserInfo>
+  <UserInfo :getdata="userdata" :data="dataList" :load="load"></UserInfo>
 </template>
 
 <script>
@@ -13,6 +13,7 @@ export default {
   data(){
     return{
       dataList:[],
+      load:false
     }
   },
   methods: {
@@ -22,12 +23,13 @@ export default {
       this.dataList.push(results[0])
     },
     userdata(){
-      this.emptyList()
-      this.getdata()
-      this.getdata()
-      this.getdata()
-      this.getdata()
-      console.log(this.dataList)
+        this.emptyList()
+        this.getdata()
+        this.getdata()
+        this.getdata()
+        this.getdata()
+        console.log(this.dataList)
+        this.load = true
     },
     emptyList(){
       while(this.dataList.length > 0) {
@@ -35,6 +37,13 @@ export default {
       }
     }
   },
+  // beforemount(){
+  //   this.userdata()
+  // },
+  // created(){
+	// 	console.log('component created')
+	// 	this.userdata()
+	// }
 }
 </script>
 
