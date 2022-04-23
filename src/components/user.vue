@@ -1,11 +1,7 @@
 <template>
-    <div class="container" v-if="!load"></div>
-    <div class="container" v-else>
+    <div class="container">
         <ul class="mh-menu">
-            <li><a href="#"><span>Art Director</span> <span>{{ data[0].name.first }}</span></a><img src="@/assets//1.jpg" alt="image01"/></li>
-            <li><a href="#"><span>Production Coordinator</span> <span>{{ data[1].name.first }}</span></a><img src="@/assets//2.jpg" alt="image02"/></li>
-            <li><a href="#"><span>Sound</span> <span>{{ data[2].name.first }}</span></a><img src="@/assets//3.jpg" alt="image03"/></li>
-            <li><a href="#"><span>Casting</span> <span>{{ data[3].name.first }}</span></a><img src="@/assets//4.jpg" alt="image04"/></li>
+			<li v-for="user in data" :key="user.login.uuid"><a href="#"><span>{{ user.location.country }}</span> <span>{{ user.name.title+'. '+user.name.first+' '+user.name.last }}</span></a><img :src=user.picture.large alt="image01"/></li>
         </ul>
     </div>
 	<button v-on:click="getdata()">Get New Users</button>
@@ -17,10 +13,8 @@ export default{
 	props:{
 		getdata: Function,
 		data: Array,
-		load: Boolean
-	},
+	}
 }
-
 </script>
 
   
@@ -202,16 +196,16 @@ button {
 
 .mh-menu{
 	height: 385px;
-	width: 600px;
+	width: 900px;   /*600*/
 	margin: 20px auto;
 	position: relative;
 }
 .mh-menu li{
-	width: 300px;
+	width: 400px; /*00*/
 }
 .mh-menu li a{
 	display: block;
-	width: 280px;
+	width: 382px; /*280*/
 	padding: 0px 10px;
 	text-align: right;
 	position: relative;
@@ -259,6 +253,8 @@ button {
 }
 .mh-menu li img{
 	position: absolute;
+	width: 380px;
+	height: 380px;
 	z-index: 1;
 	left: 0px;
 	top: 0px;
@@ -270,7 +266,7 @@ button {
 	transition: left 0.4s ease-in-out, opacity 0.6s ease-in-out;
 }
 .mh-menu li:hover img{
-	left: 300px;
+	left: 410px; /*300*/
 	opacity: 1;
 }
 </style>
