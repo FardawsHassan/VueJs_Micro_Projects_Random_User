@@ -1,7 +1,9 @@
 # random_person
 
 By Clicking "Get Users", four random persons data will be fetched from "https://randomuser.me/api" API 
-and display the names. Image of them will be shown by hovering on the name. By clicking on the Persons name, Details of that person will be shown.
+and display the names. Image of them will be shown by hovering on the name. By clicking on the Persons name, Details of that person will be shown.  
+  
+Will be deployed in heroku soon, couldn't deploy at this moment because of heroku-github security issues.
 
 ## Project setup
 ```
