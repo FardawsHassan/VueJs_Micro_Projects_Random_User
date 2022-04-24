@@ -1,7 +1,15 @@
 <template>
     <div class="container">
         <ul class="mh-menu">
-			<li v-for="user in data" :key="user.login.uuid"><a href="#"><span>{{ user.location.country }}</span> <span>{{ user.name.title+'. '+user.name.first+' '+user.name.last }}</span></a><img :src=user.picture.large alt="image01"/></li>
+			<li v-for="user in data" :key="user.login.uuid" v-on:click="toggle()">
+				<a href="#"><span>{{ user.location.country }}</span> <span>{{ user.name.title+'. '+user.name.first+' '+user.name.last }}</span></a>
+				<img :src="user.picture.large" :alt="'image_'+user.name.first"/>
+				<!--<div :class="details_class">
+					<div class="details">
+
+					</div>
+				</div>-->
+			</li>
         </ul>
     </div>
 	<button v-on:click="getdata()">Get New Users</button>
@@ -13,6 +21,22 @@ export default{
 	props:{
 		getdata: Function,
 		data: Array,
+	},
+	data(){
+		return {
+			show: false,
+			details_class: ""
+		}
+	},
+	method:{
+		toggle(){
+			this.show = !this.show;
+			if(this.show){
+				this.details_class = "details_show"
+			}else{
+				this.details_class = "details_hide"
+			}
+		}
 	}
 }
 </script>
@@ -20,6 +44,29 @@ export default{
   
 <style scoped>
 /* CSS reset */
+.details_hide{
+	position: absolute;
+	background: grey;
+	width: 380px;
+	height: 380px;
+	left: 410px;
+	top: -380px;
+	opacity: 0;
+	z-index: 2;
+	-webkit-transition: top 0.4s ease-in-out, opacity 0.6s ease-in-out;
+	-moz-transition: top 0.4s ease-in-out, opacity 0.6s ease-in-out;
+	-o-transition: top 0.4s ease-in-out, opacity 0.6s ease-in-out;
+	-ms-transition: top 0.4s ease-in-out, opacity 0.6s ease-in-out;
+	transition: top 0.4s ease-in-out, opacity 0.6s ease-in-out;
+}
+
+.details_show{
+	left: 410px; /*300*/
+	top: 0px;
+	opacity: 1;
+}
+
+
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
 	margin:0;
 	padding:0;
